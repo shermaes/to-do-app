@@ -4,7 +4,6 @@ import { Store } from './StoreProvider'
 const ListOfToDo = () => {
 
   const {state, dispatch} = useContext(Store)
-  console.log(state);
 
   return (
     <div>
