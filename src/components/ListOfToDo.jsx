@@ -6,9 +6,7 @@ const ListOfToDo = () => {
   const {state, dispatch} = useContext(Store)
 
   const onCheckbox = (event, note) => {
-      const checked = event.currentTarget.checked;
-      console.log(checked)
-      console.log(note)
+      const checked = event.currentTarget.checked
       dispatch({
           type: 'update-note',
           payload: {
@@ -16,6 +14,13 @@ const ListOfToDo = () => {
               done: checked
           }
       })
+  }
+
+  const onDelete = (note)=> {
+     dispatch({
+         type: 'remove-note',
+         payload: note 
+     })
   }
 
   return (
@@ -27,6 +32,7 @@ const ListOfToDo = () => {
                 {note.title} <br />
                 {note.message} <br />
                 <input onChange={(event) => onCheckbox(event, note)} type="checkbox" checked={note.done} />
+                <button onClick={()=> onDelete(note)}>Delete</button>
                 </li>
             })}
         </ul>
