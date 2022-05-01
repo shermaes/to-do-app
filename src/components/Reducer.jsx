@@ -1,4 +1,4 @@
-function reducer(state, action) {
+function Reducer(state, action) {
     switch (action.type) {
         case 'add-note':
             return state;
@@ -11,4 +11,4 @@ function reducer(state, action) {
     }
 }
 
-export default reducer
+export default Reducer
