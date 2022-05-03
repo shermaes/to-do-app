@@ -1,5 +1,12 @@
 function reducer(state, action) {
     switch (action.type) {
+        case 'get-notes':
+            const stateWithAllTheNotes = {
+                ...state,
+                listOfNotes: action.payload
+            }
+            return stateWithAllTheNotes
+
         case 'add-note':
             const newNote = {
                 id:Math.floor(Math.random()*100),
@@ -21,7 +28,6 @@ function reducer(state, action) {
             return newStateWithNoteDeleted;
 
         case 'update-note':
-            console.log(action.payload)
             const newListOfNotes = state.listOfNotes.filter(note => note.id !== action.payload.id)
             const newListOfNotesWithModification = [...newListOfNotes, action.payload]
             const newStateModifiedCheckbox = {...state, listOfNotes: newListOfNotesWithModification}
